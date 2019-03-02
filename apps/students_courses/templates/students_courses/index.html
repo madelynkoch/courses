@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Courses</title>
+	{% load static %}
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+	<link rel="stylesheet"href="{% static 'students_courses/main.css' %}">
+</head>
+<body>
+	<h1>Add a new course</h1>
+	<form action="courses/create" method="POST">
+		{% csrf_token %}
+		<table>
+			<tr>
+				<th valign="top">Name: </th>
+				<th><input id="name" type="text" name="name" /></th>
+			</tr>
+			<tr>
+				<th valign="top">Description: </th>
+				<th><input id="description" type="textarea" name="desc"></th>
+			</tr>
+		</table>
+		<input id="add" type="submit" value="Add">
+	</form>
+	<h2>Courses</h2>
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th class="col">Course Name</th>
+				<th class="col">Description</th>
+				<th class="col">Date Added</th>
+				<th class="col">Actions</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for course in courses %}
+			<tr>
+				<td scope="row">{{course.name}}</td>
+				<td>{{course.desc}}</td>
+				<td>{{course.created_at}}</td>
+				<td>
+					<a href="courses/{{course.id}}/confirm">Remove</a>
+				</td>
+			</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+</body>
+</html>

@@ -1,0 +1,33 @@
+.col {
+	width: 30%;
+}
+
+body {
+	padding: 20px;
+}
+
+h1 {
+	margin: 20px 0px;
+}
+
+div {
+	display: block;
+	margin: 10px 0px;
+}
+
+#description {
+	width: 350px;
+	height: 150px;
+}
+
+#name {
+	width: 350px;
+}
+
+th {
+	padding: 15px 15px 15px 0px;
+}
+
+#add {
+	margin-left: 415px;
+}
